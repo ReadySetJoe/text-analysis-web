@@ -1,0 +1,583 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    sans-serif;
+  line-height: 1.6;
+}
+
+.main {
+  text-align: center;
+}
+
+.main h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.main h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.steps {
+  margin: 3rem 0;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #f9f9f9;
+  text-align: left;
+}
+
+.downloadBtn {
+  background: linear-gradient(135deg, #007aff 0%, #0051d5 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 1rem 0;
+  transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+}
+
+.downloadBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+}
+
+.downloadBtn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.resetBtn {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.2s;
+}
+
+.resetBtn:hover {
+  background: #ff5252;
+}
+
+.instructions {
+  text-align: left;
+  margin-top: 2rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.instructions h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.instructions ol {
+  padding-left: 1.5rem;
+}
+
+.instructions li {
+  margin: 0.8rem 0;
+  color: #555;
+}
+
+.fileInput {
+  margin: 1rem;
+  padding: 2rem;
+  border: 3px dashed #007aff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  cursor: pointer;
+  background: #f8f9ff;
+  transition: all 0.2s;
+  font-size: 1rem;
+}
+
+.fileInput:hover {
+  border-color: #0051d5;
+  background: #f0f4ff;
+}
+
+.fileInput:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  color: #007aff;
+}
+
+.loading p {
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007aff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  background: #ffebee;
+  color: #c62828;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  border: 1px solid #ffcdd2;
+}
+
+.uploadSuccess {
+  background: #e8f5e8;
+  color: #2e7d32;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  border: 1px solid #c8e6c9;
+  font-weight: 500;
+}
+
+.results {
+  margin-top: 3rem;
+  text-align: left;
+}
+
+.resultsHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.resultsHeader h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.timeRange {
+  font-size: 1.1rem;
+  color: #666;
+  background: #f5f5f5;
+  padding: 0.8rem 1.5rem;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.overviewCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s;
+}
+
+.overviewCard:hover {
+  transform: translateY(-2px);
+}
+
+.overviewIcon {
+  font-size: 2.5rem;
+  opacity: 0.8;
+}
+
+.overviewContent h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.overviewNumber {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+  color: #007aff;
+}
+
+.overviewContent small {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.analysisSection {
+  margin: 3rem 0;
+  background: black;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.analysisSection h3 {
+  margin: 0 0 1.5rem 0;
+  color: #333;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.5rem;
+}
+
+.patternGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.patternCard {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.patternCard h4 {
+  margin: 0 0 1rem 0;
+  color: #495057;
+  font-size: 1.1rem;
+}
+
+.patternValue {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #007aff;
+  margin: 0 0 1rem 0;
+}
+
+.hourlyBreakdown,
+.weeklyBreakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.hourItem,
+.dayItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.contactCard {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.contactHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.contactHeader h4 {
+  margin: 0;
+  color: #333;
+}
+
+.messageCount {
+  background: #007aff;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.contactStats {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.contactStat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.statLabel {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.statValue {
+  font-weight: 500;
+  color: #333;
+}
+
+.loveGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.loveOverview,
+.loveByContact {
+  background: #fff5f5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #fed7d7;
+}
+
+.loveOverview h4,
+.loveByContact h4 {
+  margin: 0 0 1rem 0;
+  color: #c53030;
+}
+
+.loveTypeItem,
+.loveContactItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #fed7d7;
+}
+
+.loveTypeItem:last-child,
+.loveContactItem:last-child {
+  border-bottom: none;
+}
+
+.loveType,
+.loveContactName {
+  color: #2d3748;
+  font-weight: 500;
+}
+
+.loveCount,
+.loveContactCount {
+  color: #c53030;
+  font-weight: 600;
+}
+
+.emojiStats {
+  text-align: center;
+}
+
+.emojiStats p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.topEmojis h4 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.emojiGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.emojiItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.emojiChar {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.emojiCount {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.wordCloud {
+  text-align: center;
+}
+
+.wordCloud h4 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.wordGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.wordItem {
+  background: #007aff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+  transition: transform 0.2s;
+}
+
+.wordItem:hover {
+  transform: scale(1.05);
+}
+
+.exportSection {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.exportSection h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.exportButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.exportBtn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.exportBtn:hover {
+  background: #5a6268;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .main h1 {
+    font-size: 2rem;
+  }
+
+  .overviewGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .patternGrid,
+  .contactGrid,
+  .loveGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .contactHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .exportButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .emojiGrid {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  }
+
+  .wordGrid {
+    padding: 1rem;
+  }
+}
+
+@media print {
+  .steps,
+  .exportSection {
+    display: none;
+  }
+
+  .container {
+    max-width: none;
+    padding: 1rem;
+  }
+
+  .overviewCard:hover,
+  .patternCard:hover {
+    transform: none;
+  }
+}
