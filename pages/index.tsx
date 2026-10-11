@@ -1,14 +1,15 @@
 // pages/index.tsx
-import { useState, ChangeEvent, JSX } from "react";
+import { useState, ChangeEvent } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { MessageExport, MessageAnalysis } from "../types/message";
 
-export default function Home(): JSX.Element {
+export default function Home() {
   const [uploadedData, setUploadedData] = useState<MessageExport | null>(null);
   const [analysis, setAnalysis] = useState<MessageAnalysis | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [fileContent, setFileContent] = useState("");
 
   const handleFileUpload = async (
     event: ChangeEvent<HTMLInputElement>
@@ -19,30 +20,18 @@ export default function Home(): JSX.Element {
     setLoading(true);
     setError(null);
 
+    console.log("file", file);
+
     try {
-      const text = await file.text();
-      const data: MessageExport = JSON.parse(text);
-
-      // Validate the data structure
-      if (!data.messages || !Array.isArray(data.messages)) {
-        throw new Error("Invalid file format. Expected messages array.");
-      }
-
-      setUploadedData(data);
-
-      // Send to analysis endpoint
-      const response = await fetch("/api/analyze", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Server error: ${response.status}`);
-      }
-
-      const analysisResult: MessageAnalysis = await response.json();
-      setAnalysis(analysisResult);
+      const reader = new FileReader();
+      reader.onload = e => {
+        if (e.target && typeof e.target.result === "string") {
+          setFileContent(e.target.result);
+        } else {
+          setFileContent("");
+        }
+      };
+      reader.readAsText(file); // Read the file as text
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
@@ -53,9 +42,20 @@ export default function Home(): JSX.Element {
     }
   };
 
-  const downloadShortcut = (): void => {
-    window.open("/api/shortcut-download", "_blank");
-  };
+  // const analyzeMessages = async (data: MessageExport): Promise<void> => {
+  //   const response = await fetch("/api/analyze", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(data),
+  //   });
+
+  //   if (!response.ok) {
+  //     throw new Error(`Server error: ${response.status}`);
+  //   }
+
+  //   const analysisResult: MessageAnalysis = await response.json();
+  //   setAnalysis(analysisResult);
+  // };
 
   const resetApp = (): void => {
     setUploadedData(null);
@@ -105,41 +105,54 @@ export default function Home(): JSX.Element {
         </p>
 
         <div className={styles.steps}>
-          <h2>Step 1: Download the iOS Shortcut</h2>
-          <p>
-            This Shortcut will extract your messages and format them for
-            comprehensive analysis.
-          </p>
-          <button onClick={downloadShortcut} className={styles.downloadBtn}>
-            📥 Download iOS Shortcut
-          </button>
+          <p>Create a custom iOS Shortcut for automated message export.</p>
 
           <div className={styles.instructions}>
-            <h3>Installation Instructions:</h3>
-            <ol>
-              <li>Tap the download button above on your iPhone</li>
-              <li>When prompted, tap &quot;Get Shortcut&quot;</li>
-              <li>
-                Open the Shortcuts app and find &quot;Export Messages&quot;
-              </li>
-              <li>Tap the shortcut to run it</li>
-              <li>Grant permission to access Messages</li>
-              <li>Choose your export options (date range, contacts)</li>
-              <li>The shortcut will create a JSON file in your Files app</li>
-            </ol>
+            <h3>Exporting Your Messages</h3>
+            <div className={styles.shortcutSteps}>
+              <div className={styles.shortcutStep}>
+                <h4>Step 1: Install Homebrew</h4>
+                <p>Open your Terminal program and input this command:</p>
+                <code>
+                  /bin/bash -c &quot;$(curl -fsSL
+                  https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+                </code>
+              </div>
+
+              <div className={styles.shortcutStep}>
+                <h4>Step 2: Install the iMessage exporter:</h4>
+                <p>
+                  Run this command in your terminal to install the tool we will
+                  use to export our texts to a .txt file:
+                </p>
+                <code>brew install imessage-exporter</code>
+              </div>
+
+              <div className={styles.shortcutStep}>
+                <h4>Step 3: Run the iMessage export tool</h4>
+                <p>
+                  Using this command, export your texts to a folder on your
+                  computer
+                </p>
+                <code>imessage-exporter -f txt -o output -c clone</code>
+              </div>
+
+              <div className={styles.shortcutStep}>
+                <h4>Step 4: Upload your conversation</h4>
+                <input
+                  type="file"
+                  accept=".txt"
+                  onChange={handleFileUpload}
+                  className={styles.fileInput}
+                  disabled={loading}
+                />
+                {fileContent && <p>File found!</p>}
+              </div>
+            </div>
           </div>
         </div>
 
         <div className={styles.steps}>
-          <h2>Step 2: Upload Your Exported Messages</h2>
-          <input
-            type="file"
-            accept=".json"
-            onChange={handleFileUpload}
-            className={styles.fileInput}
-            disabled={loading}
-          />
-
           {loading && (
             <div className={styles.loading}>
               <div className={styles.spinner}></div>

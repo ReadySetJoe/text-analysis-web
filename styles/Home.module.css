@@ -1,3 +1,4 @@
+/* styles/Home.module.css */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -13,15 +14,6 @@
 
 .main h1 {
   font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.main h2 {
-  font-size: 2rem;
   margin-bottom: 0.5rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
@@ -109,6 +101,140 @@
 .instructions li {
   margin: 0.8rem 0;
   color: #555;
+}
+
+.pasteSection {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.pasteSection h4 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.pasteArea {
+  width: 100%;
+  min-height: 200px;
+  padding: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  resize: vertical;
+  margin-bottom: 1rem;
+}
+
+.pasteArea:focus {
+  outline: none;
+  border-color: #007aff;
+}
+
+.processBtn {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+}
+
+.processBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+}
+
+.processBtn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.shortcutSteps {
+  margin-top: 1rem;
+}
+
+.shortcutStep {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #007aff;
+}
+
+.shortcutStep h4 {
+  margin: 0 0 0.5rem 0;
+  color: #007aff;
+}
+
+.shortcutStep p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.shortcutStep ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.importantNote {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.importantNote h3 {
+  margin: 0 0 0.5rem 0;
+  color: #856404;
+}
+
+.importantNote p {
+  margin: 0;
+  color: #856404;
+  font-weight: 500;
+}
+
+.troubleshooting {
+  background: #e7f3ff;
+  border: 1px solid #b3d9ff;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+
+.troubleshooting h4 {
+  margin: 0 0 1rem 0;
+  color: #0066cc;
+}
+
+.troubleshooting ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.troubleshooting li {
+  margin: 0.5rem 0;
+  color: #333;
+}
+
+.shortcutStep ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.shortcutStep ul li {
+  margin: 0.2rem 0;
+  color: #666;
+  font-size: 0.9rem;
 }
 
 .fileInput {
@@ -257,7 +383,7 @@
 
 .analysisSection {
   margin: 3rem 0;
-  background: black;
+  background: white;
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
